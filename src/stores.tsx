@@ -21,7 +21,7 @@ import {
   FileInput,
 } from 'react-admin';
 
-const PostFilter = (props: any) => {
+const StoreFilter = (props: any) => {
   return (
     <Filter {...props}>
       <TextInput label="Search" source="title" alwaysOn />
@@ -29,8 +29,8 @@ const PostFilter = (props: any) => {
   );
 };
 
-export const PostList = (props: any) => (
-  <List {...props} filters={<PostFilter />}>
+export const StoreList = (props: any) => (
+  <List {...props} filters={<StoreFilter />}>
     <Datagrid>
       <TextField source="title" />
       <ShowButton label="" />
@@ -40,7 +40,7 @@ export const PostList = (props: any) => (
   </List>
 );
 
-export const PostShow = (props: any) => (
+export const StoreShow = (props: any) => (
   <Show {...props}>
     <SimpleShowLayout>
       <TextField source="id" />
@@ -50,7 +50,7 @@ export const PostShow = (props: any) => (
   </Show>
 );
 
-export const PostCreate = (props: any) => (
+export const StoreCreate = (props: any) => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="title" />
@@ -61,7 +61,7 @@ export const PostCreate = (props: any) => (
   </Create>
 );
 
-export const PostEdit = (props: any) => (
+export const StoreEdit = (props: any) => (
   <Edit {...props}>
     <SimpleForm>
       {/* <DisabledInput source="id" /> */}
