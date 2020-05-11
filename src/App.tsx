@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import { PostList, PostShow, PostCreate, PostEdit } from './posts';
+import { Admin, Resource } from 'react-admin';
+import { FirebaseDataProvider, FirebaseAuthProvider, RAFirebaseOptions } from 'react-admin-firebase';
+import Login from './Login';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const config = require('./fconfig.js').firebaseConfig;
+
+const options: RAFirebaseOptions = {
+  logging: true,
+  rootRef: 'root_collection/some_document',
+  watch: ['posts'],
+};
+const dataProvider = FirebaseDataProvider(config, options);
+const authProvider = FirebaseAuthProvider(config, options);
+
+class App extends React.Component {
+  render() {
+    return (
+      <Admin dataProvider={dataProvider} authProvider={authProvider} loginPage={Login}>
+        <Resource name="posts" list={PostList} show={PostShow} create={PostCreate} edit={PostEdit} />
+      </Admin>
+    );
+  }
 }
 
 export default App;
