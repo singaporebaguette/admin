@@ -30,7 +30,7 @@ const StoreFilter = (props: any) => {
   );
 };
 
-export const StoreList = (props: any) => (
+export const UserList = (props: any) => (
   <List {...props} filters={<StoreFilter />}>
     <Datagrid>
       <TextField source="title" />
@@ -41,7 +41,7 @@ export const StoreList = (props: any) => (
   </List>
 );
 
-export const StoreShow = (props: any) => (
+export const UserShow = (props: any) => (
   <Show {...props}>
     <SimpleShowLayout>
       <TextField source="id" />
@@ -51,7 +51,7 @@ export const StoreShow = (props: any) => (
   </Show>
 );
 
-export const StoreCreate = (props: any) => (
+export const UserCreate = (props: any) => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="title" />
@@ -75,26 +75,19 @@ export const StoreCreate = (props: any) => (
   </Create>
 );
 
-export const StoreEdit = (props: any) => (
+export const UserEdit = (props: any) => (
   <Edit {...props}>
     <SimpleForm>
       {/* <DisabledInput source="id" /> */}
-      <TextInput source="title" />
-      <TextInput source="description" />
-      <NumberInput source="mark" />
-      <NumberInput source="coordinates.lat" />
-      <NumberInput source="coordinates.lng" />
-
-      <SelectInput
-        source="approved"
-        choices={[
-          { id: 1, name: 'Approved' },
-          { id: 2, name: 'Decent' },
-          { id: 3, name: 'Emergency Only' },
-          { id: 4, name: 'No' },
-          { id: 5, name: 'Offense to France' },
-        ]}
-      />
+      <TextInput source="id" />
+      <TextInput source="email" />
     </SimpleForm>
   </Edit>
 );
+
+export default {
+  Edit: UserEdit,
+  Create: UserCreate,
+  Show: UserShow,
+  List: UserList,
+};

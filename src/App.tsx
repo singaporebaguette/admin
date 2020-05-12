@@ -1,5 +1,7 @@
 import * as React from 'react';
 import * as stores from './stores';
+import users from './entities/users';
+
 import { Admin, Resource } from 'react-admin';
 import { FirebaseDataProvider, FirebaseAuthProvider, RAFirebaseOptions } from 'react-admin-firebase';
 import Login from './Login';
@@ -8,7 +10,7 @@ const config = require('./fconfig.js').firebaseConfig;
 
 const options: RAFirebaseOptions = {
   logging: true,
-  rootRef: 'root_collection/some_document',
+  rootRef: '/',
   watch: ['stores'],
 };
 const dataProvider = FirebaseDataProvider(config, options);
@@ -25,6 +27,7 @@ class App extends React.Component {
           create={stores.StoreCreate}
           edit={stores.StoreEdit}
         />
+        <Resource name="users" list={users.List} show={users.Show} create={users.Create} edit={users.Edit} />
       </Admin>
     );
   }
