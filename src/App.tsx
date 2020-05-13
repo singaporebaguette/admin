@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as stores from './stores';
-import users from './entities/users';
 
 import { Admin, Resource } from 'react-admin';
 import { FirebaseDataProvider, FirebaseAuthProvider, RAFirebaseOptions } from 'react-admin-firebase';
@@ -27,7 +26,6 @@ class App extends React.Component {
           create={stores.StoreCreate}
           edit={stores.StoreEdit}
         />
-        <Resource name="users" list={users.List} show={users.Show} create={users.Create} edit={users.Edit} />
       </Admin>
     );
   }
