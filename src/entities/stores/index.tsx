@@ -35,6 +35,8 @@ export const Form = (props: any) => (
 
     <NumberInput source="mark" label="mark (out of 5)" />
 
+    <NumberInput source="baguettePrice" label="Baguette price" />
+
     <NumberInput source="coordinates.lat" label="Latitude" />
     <NumberInput source="coordinates.lng" label="Longitude" />
 
