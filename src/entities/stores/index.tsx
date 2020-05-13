@@ -18,7 +18,6 @@ import {
   DeleteButton,
   SelectInput,
   FileField,
-  FileInput,
   NumberInput,
   CheckboxGroupInput,
 } from 'react-admin';
@@ -35,14 +34,16 @@ export const Form = () => (
   <SimpleForm>
     <TextInput source="title" />
     <TextInput source="description" />
-    <NumberInput source="mark" />
+
+    <NumberInput source="mark" label="mark (out of 5)" />
 
     <NumberInput source="coordinates.lat" label="Latitude" />
     <NumberInput source="coordinates.lng" label="Longitude" />
 
-    <TextInput source="url" />
+    <TextInput source="link" />
 
     <SelectInput
+      label="howApproved"
       source="approved"
       choices={[
         { id: 1, name: 'Approved' },
@@ -55,10 +56,10 @@ export const Form = () => (
     <SelectInput
       source="price"
       choices={[
-        { id: 1, name: '1' },
-        { id: 2, name: '2' },
-        { id: 3, name: '3' },
-        { id: 4, name: '4' },
+        { id: 1, name: '$' },
+        { id: 2, name: '$$' },
+        { id: 3, name: '$$$' },
+        { id: 4, name: '$$$$' },
       ]}
     />
 
@@ -70,10 +71,6 @@ export const Form = () => (
         { id: 'croissant', name: 'Croissant' },
       ]}
     />
-
-    <FileInput source="file" label="File" accept="application/png">
-      <FileField source="src" title="title" />
-    </FileInput>
   </SimpleForm>
 );
 
