@@ -19,7 +19,7 @@ class App extends React.Component {
   render() {
     return (
       <Admin dataProvider={dataProvider} authProvider={authProvider} loginPage={Login}>
-        <Resource name="stores" list={stores.List} show={stores.Show} create={stores.Create} edit={stores.Edit} />
+        <Resource name="stores" list={stores.List} create={stores.Create} edit={stores.Edit} show={stores.Show} />
       </Admin>
     );
   }

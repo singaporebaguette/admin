@@ -1,4 +1,4 @@
-// in src/posts.js
+// in src/stores.js
 import * as React from 'react';
 // tslint:disable-next-line:no-var-requires
 import {
@@ -8,7 +8,6 @@ import {
   Create,
   Edit,
   Filter,
-  // DisabledInput,
   SimpleShowLayout,
   SimpleForm,
   TextField,
@@ -17,7 +16,6 @@ import {
   EditButton,
   DeleteButton,
   SelectInput,
-  FileField,
   NumberInput,
   CheckboxGroupInput,
 } from 'react-admin';
@@ -30,8 +28,8 @@ const StoreFilter = (props: any) => {
   );
 };
 
-export const Form = () => (
-  <SimpleForm>
+export const Form = (props: any) => (
+  <SimpleForm {...props}>
     <TextInput source="title" />
     <TextInput source="description" />
 
@@ -90,7 +88,6 @@ export const StoreShow = (props: any) => (
     <SimpleShowLayout>
       <TextField source="id" />
       <TextField source="title" />
-      <FileField source="file.src" title="file.title" />
     </SimpleShowLayout>
   </Show>
 );
