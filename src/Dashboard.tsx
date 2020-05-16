@@ -11,7 +11,7 @@ export default () => (
     <Title title="Singapore Baguette | Admin" />
     <CardContent>
       <Link to="/export-data">
-        <Button>Export data</Button>
+        <Button>Export data page</Button>
       </Link>
     </CardContent>
   </Card>
