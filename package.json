@@ -11,6 +11,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
+    "axios": "^0.19.2",
     "firebase": "^7.14.3",
     "react": "^16.13.1",
     "react-admin": "^3.5.1",
