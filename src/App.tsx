@@ -5,6 +5,9 @@ import { Admin, Resource } from 'react-admin';
 import { FirebaseDataProvider, FirebaseAuthProvider, RAFirebaseOptions } from 'react-admin-firebase';
 import Login from './Login';
 import approvedUsers from './approvedUsers';
+import customRoutes from './customRoutes';
+import Dashboard from './Dashboard';
+
 const config = require('./fconfig.js').firebaseConfig;
 
 const options: RAFirebaseOptions = {
@@ -31,7 +34,13 @@ const ap = {
 class App extends React.Component {
   render() {
     return (
-      <Admin dataProvider={dataProvider} authProvider={ap} loginPage={Login}>
+      <Admin
+        dashboard={Dashboard}
+        dataProvider={dataProvider}
+        authProvider={ap}
+        loginPage={Login}
+        customRoutes={customRoutes}
+      >
         <Resource name="stores" list={stores.List} create={stores.Create} edit={stores.Edit} show={stores.Show} />
       </Admin>
     );
