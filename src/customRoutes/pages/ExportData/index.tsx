@@ -11,13 +11,18 @@ import axios from 'axios';
 const ExportData = (props: any) => {
   const [user, setUser] = React.useState<any>(null);
   const [loading, setLoading] = React.useState(false);
+  const [userLoading, setUserLoading] = React.useState(true);
 
   React.useEffect(() => {
-    const retrieveUser = async () => {
-      const user = firebase.auth().currentUser;
-      setUser(user);
-    };
-    retrieveUser();
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        setUser(user);
+        setUserLoading(false);
+      } else {
+        // No user is signed in.
+      }
+    });
   }, [setUser]);
 
   const exportData = async () => {
@@ -29,7 +34,7 @@ const ExportData = (props: any) => {
     });
     setLoading(false);
 
-    const blob = new Blob([result.data], { type: 'text/plain;charset=utf-8' });
+    const blob = new Blob([JSON.stringify(result.data)], { type: 'text/plain;charset=utf-8' });
     saveAs(blob, 'singapore-baguette.json');
   };
 
@@ -37,7 +42,8 @@ const ExportData = (props: any) => {
     <Card>
       <Title title="Export data" />
       <CardContent>
-        <Button disabled={loading} onClick={exportData}>
+        {userLoading && <p>retrieving current user</p>}
+        <Button disabled={loading || userLoading} onClick={exportData}>
           Export
         </Button>
       </CardContent>
