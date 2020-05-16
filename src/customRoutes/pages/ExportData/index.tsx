@@ -34,7 +34,7 @@ const ExportData = (props: any) => {
     });
     setLoading(false);
 
-    const blob = new Blob([JSON.stringify(result.data)], { type: 'text/plain;charset=utf-8' });
+    const blob = new Blob([JSON.stringify(result.data, null, 2)], { type: 'text/plain;charset=utf-8' });
     saveAs(blob, 'singapore-baguette.json');
   };
 
